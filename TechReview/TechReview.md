@@ -1,4 +1,4 @@
-# Book Management Project
+# Student Management Project
 # Technologies
 ## Laravel framework
 ## MVC

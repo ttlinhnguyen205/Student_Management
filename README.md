@@ -1,4 +1,4 @@
-# Project: Book Management
-Book Managment Web Application
+# Project: Student Management
+Student Managment Web Application
 # Description
 ## UML
