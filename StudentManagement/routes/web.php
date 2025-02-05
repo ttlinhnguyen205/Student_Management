@@ -6,8 +6,7 @@ use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\StudentController; 
 use App\Http\Controllers\SubjectController;
-
-
+use App\Http\Controllers\RegistrationController;
 
 Route::get('/', function () {
     return view('welcome');
