@@ -18,7 +18,7 @@ Student Managment Web Application
 #### 1.3.3. Xóa môn học
 ![activity-Delete Subject](https://github.com/user-attachments/assets/1d3b6dbd-3bf8-449e-b935-e336fbcfe190)
 ## 2.Giao diện đầu tiên của dự án 
-![image](https://github.com/user-attachments/assets/942f3554-34ff-415c-ac28-e3ce1bbe1a7c)
+![image](https://github.com/user-attachments/assets/d362a76d-c4db-482b-ac96-5456dfc9f6a2)
 ## Git của dự án
 https://github.com/ttlinhnguyen205/Student_Management 
 ## Demi của dự án
