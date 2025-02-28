@@ -21,5 +21,6 @@ Student Managment Web Application
 ![image](https://github.com/user-attachments/assets/942f3554-34ff-415c-ac28-e3ce1bbe1a7c)
 ## Git của dự án
 https://github.com/ttlinhnguyen205/Student_Management 
+## Demi của dự án
 
 
