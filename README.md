@@ -10,6 +10,5 @@ Student Managment Web Application
 ## 2.Giao diện của dự án 
 ### 2.1. Đăng nhập
 ### 2.2. Giao diện cho Admin
-### 2.3. Giao diện cho Sinh viên
 
 
