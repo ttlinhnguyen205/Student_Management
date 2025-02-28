@@ -2,8 +2,8 @@
 # Project: Student Management.
 Student Managment Web Application
 # Chức năng:
-- Thêm, sửa, xóa, sắp xếp, tìm kiếm sinh viên.
-- Thêm, sửa, xóa, sắp xếp, tìm kiếm môn học.
+- Thêm, sửa, xóa sinh viên.
+- Thêm, sửa, xóa môn học.
 - Đăng nhập, đăng xuất.
 ## 1.UML của dự án 
 ![Untitled](https://github.com/user-attachments/assets/a4e68320-c286-448d-84a0-227fea10388a)
