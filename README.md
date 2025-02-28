@@ -15,10 +15,11 @@ Student Managment Web Application
 #### 1.3.1. Thêm môn học 
 ![activity-Copy of Page-1](https://github.com/user-attachments/assets/d1b817a0-829c-4644-90d4-0c384b88d179)
 #### 1.3.2. Sửa môn học
-
 #### 1.3.3. Xóa môn học
 ![activity-Delete Subject](https://github.com/user-attachments/assets/1d3b6dbd-3bf8-449e-b935-e336fbcfe190)
 ## 2.Giao diện đầu tiên của dự án 
+![image](https://github.com/user-attachments/assets/942f3554-34ff-415c-ac28-e3ce1bbe1a7c)
+## Git của dự án
 
 
 
