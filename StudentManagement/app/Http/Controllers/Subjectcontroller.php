@@ -26,7 +26,7 @@ class SubjectController extends Controller
     public function store(Request $request)
 {
     $request->validate([
-        'IdSubject' => ['required', new NoVietnameseCharacters], // Kiểm tra IdSubject không chứa ký tự tiếng Việt
+        'IdSubject' => ['required', 'string', 'size:8', new NoVietnameseCharacters], // Đảm bảo đúng 8 ký tự
         'NameSubject' => 'required|string|max:255',
         'Note' => 'nullable|string',
         'start_date' => 'required|date',
@@ -61,6 +61,7 @@ class SubjectController extends Controller
     public function update(Request $request, Subject $subject)
     {
         $request->validate([
+            'IdSubject' => ['required', 'string', 'size:8', new NoVietnameseCharacters], // Kiểm tra độ dài 8 ký tự
             'NameSubject' => 'required|string|max:255',
             'Note' => 'nullable|string',
         ]);
@@ -76,8 +77,9 @@ class SubjectController extends Controller
             // Nếu môn học có sinh viên, xóa tất cả sinh viên trước
             $subject->students()->delete();
         }
-
+    
         $subject->delete(); // Xóa môn học
+    
         return redirect()->route('subjects.index')->with('success', 'Môn học đã được xóa thành công.');
     }
 

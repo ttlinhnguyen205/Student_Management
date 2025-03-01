@@ -45,6 +45,14 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
+                @if(session('success'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ session('success') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @endif
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
@@ -78,10 +86,12 @@
                                             <td>{{ $subject->end_date }}</td>
                                             <td><a class="btn btn-success" href="{{ route('subjects.edit', $subject->IdSubject) }}">Sửa</a></td>
                                             <td>
-                                                <form action="{{ route('subjects.destroy', $subject->IdSubject) }}" method="POST" style="display:inline;">
+                                                <form action="{{ route('subjects.destroy', $subject->IdSubject) }}" method="POST" class="delete-form">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger">Xóa</button>
+                                                    <button type="button" class="btn btn-danger delete-button" data-id="{{ $subject->IdSubject }}">
+                                                        Xóa
+                                                    </button>
                                                 </form>
                                             </td>
                                             <td><a class="btn btn-success" href="{{ route('subjects.show', $subject->IdSubject) }}">Xem Sinh Viên</a></td>
@@ -155,5 +165,17 @@
     <script src="{{ asset('js/demo/chart-pie-demo.js') }}"></script>
 
 </body>
+<script>
+    $(document).ready(function () {
+        $('.delete-button').click(function () {
+            let form = $(this).closest('.delete-form');
+            let subjectId = $(this).data('id');
+
+            if (confirm('Bạn có chắc chắn muốn xóa môn học có mã ' + subjectId + ' không?')) {
+                form.submit();
+            }
+        });
+    });
+</script>
 
 </html>
