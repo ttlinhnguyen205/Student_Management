@@ -6,7 +6,7 @@ Student Managment Web Application
 - Thêm, sửa, xóa sinh viên.
 - Thêm, sửa, xóa môn học.
 - Đăng nhập, đăng xuất.
-## 1.UML của dự án 
+## 1. UML của dự án 
 ![Untitled](https://github.com/user-attachments/assets/a4e68320-c286-448d-84a0-227fea10388a)
 ### 1.1. Đăng nhập
 ![activity-Login](https://github.com/user-attachments/assets/b45975c5-ed77-4f37-b8c7-10779d0d9795)
@@ -21,7 +21,9 @@ Student Managment Web Application
 #### 1.3.4. Thêm sinh viên
 #### 1.3.5. Sửa sinh viên
 #### 1.3.6. Xóa sinh viên
-## 2.Giao diện đầu tiên của dự án 
+### 1.3. Chức năng của User
+#### 1.4.1. Xem danh sách môn học
+## 2. Giao diện đầu tiên của dự án 
 ![image](https://github.com/user-attachments/assets/d362a76d-c4db-482b-ac96-5456dfc9f6a2)
 ### 2.1. Giao diện của Admin 
 #### 2.1.1. Giao diện dashboard
@@ -32,6 +34,7 @@ Student Managment Web Application
 #### 2.1.3. Giao diện quản lý sinh viên
 ![image](https://github.com/user-attachments/assets/769de435-abfe-4fe4-8d95-819765b90af0)
 ![image](https://github.com/user-attachments/assets/09133dca-8405-4674-8050-f249215918bf)
+### 2.1. Giao diện của User
 
 ## Git của dự án
 https://github.com/ttlinhnguyen205/Student_Management 
