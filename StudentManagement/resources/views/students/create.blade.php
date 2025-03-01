@@ -107,10 +107,10 @@
                                     <select class="form-control @error('IdSubject') is-invalid @enderror" name="IdSubject" required>
                                         @foreach ($subjects as $subject)
                                             <option value="{{ $subject->IdSubject }}" {{ old('IdSubject') == $subject->IdSubject ? 'selected' : '' }}>
-                                                {{ $subject->IdSubject }}
+                                                {{ $subject->NameSubject }}
                                             </option>
                                         @endforeach
-                                    </select>
+                                    </select>                                    
                                     @error('IdSubject')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror

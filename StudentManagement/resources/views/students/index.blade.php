@@ -75,7 +75,7 @@
                                             <td>{{ $student->FirstName }}</td>
                                             <td>{{ $student->BirthDay }}</td>
                                             <td>{{ $student->Gender }}</td>
-                                            <td>{{ $student->IdSubject }}</td>
+                                            <td>{{ $student->subject->NameSubject ?? 'Không có môn học' }}</td>
                                             <td><a class="btn btn-success" href="{{ route('students.edit', $student->MSSV) }}">Sửa</a></td>
                                             <td>
                                                 <form action="{{ route('students.destroy', $student->MSSV) }}" method="POST" style="display:inline;">
