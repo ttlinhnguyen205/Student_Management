@@ -73,24 +73,23 @@ class SubjectController extends Controller
     // Xóa môn học
     public function destroy(Subject $subject)
     {
-        if ($subject->students()->count() > 0) {
-            // Nếu môn học có sinh viên, xóa tất cả sinh viên trước
-            $subject->students()->delete();
-        }
+        // Xóa tất cả các liên kết sinh viên trong bảng trung gian student_subject
+        $subject->students()->detach();
     
-        $subject->delete(); // Xóa môn học
+        // Xóa môn học
+        $subject->delete();
     
         return redirect()->route('subjects.index')->with('success', 'Môn học đã được xóa thành công.');
     }
-
     // Hiển thị sinh viên theo môn học
     public function show($id)
     {
         // Lấy môn học theo IdSubject
-        $subject = Subject::findOrFail($id);
-        // Lấy sinh viên theo IdSubject
-        $students = Student::where('IdSubject', $subject->IdSubject)->get();
-
-        return view('subjects.getStudent', compact('students', 'subject')); // Truyền danh sách sinh viên và môn học vào view
+        $subject = Subject::where('IdSubject', $id)->firstOrFail();
+    
+        // Lấy danh sách sinh viên thông qua quan hệ many-to-many
+        $students = $subject->students;
+    
+        return view('subjects.getStudent', compact('students', 'subject'));
     }
 }

@@ -104,9 +104,10 @@
 
                                 <div class="form-group">
                                     <label for="subject">Môn học</label>
-                                    <select class="form-control @error('IdSubject') is-invalid @enderror" name="IdSubject" required>
+                                    <select class="form-control @error('IdSubject') is-invalid @enderror" name="IdSubject[]" multiple required>
                                         @foreach ($subjects as $subject)
-                                            <option value="{{ $subject->IdSubject }}" {{ old('IdSubject') == $subject->IdSubject ? 'selected' : '' }}>
+                                            <option value="{{ $subject->IdSubject }}" 
+                                                {{ (collect(old('IdSubject'))->contains($subject->IdSubject)) ? 'selected' : '' }}>
                                                 {{ $subject->NameSubject }}
                                             </option>
                                         @endforeach
@@ -115,6 +116,7 @@
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
+                                
                                 
                                 @if (session('success'))
                                 <div class="alert alert-success">

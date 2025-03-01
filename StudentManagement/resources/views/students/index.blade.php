@@ -45,6 +45,13 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
+                    
+                    <!-- Hiển thị thông báo thành công -->
+                    @if(session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
@@ -75,7 +82,16 @@
                                             <td>{{ $student->FirstName }}</td>
                                             <td>{{ $student->BirthDay }}</td>
                                             <td>{{ $student->Gender }}</td>
-                                            <td>{{ $student->subject->NameSubject ?? 'Không có môn học' }}</td>
+                                            <td>
+                                                @if($student->subjects->isNotEmpty())
+                                                    @foreach($student->subjects as $subject)
+                                                        <span class="badge badge-primary">{{ $subject->NameSubject }}</span>
+                                                    @endforeach
+                                                @else
+                                                    <span class="text-danger">Chưa đăng ký môn học</span>
+                                                @endif
+                                            </td>
+                                            
                                             <td><a class="btn btn-success" href="{{ route('students.edit', $student->MSSV) }}">Sửa</a></td>
                                             <td>
                                                 <form action="{{ route('students.destroy', $student->MSSV) }}" method="POST" style="display:inline;">

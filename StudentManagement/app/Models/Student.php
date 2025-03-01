@@ -9,25 +9,20 @@ class Student extends Model
 {
     use HasFactory;
 
-    // Đặt tên bảng 
-    protected $table = 'students';
+    protected $table = 'students';  // Định nghĩa tên bảng
+    protected $primaryKey = 'MSSV'; // Định nghĩa khóa chính là MSSV
+    public $incrementing = false;   // Vì MSSV là string, không phải auto-increment
+    protected $keyType = 'string';  // MSSV là kiểu string
 
-    protected $primaryKey = 'MSSV'; // Khóa chính
-
-    protected $casts = [
-        'MSSV' => 'string',
-        'IdSubject' => 'string'
-    ];
-
-    // Các cột có thể được gán đại trà
     protected $fillable = [
-        'MSSV', 'LastName', 'FirstName', 'BirthDay', 'Gender', 'Avatar', 'IdSubject'
+        'MSSV', 'LastName', 'FirstName', 'BirthDay', 'Gender', 'Avatar'
     ];
 
-    // Định nghĩa quan hệ với bảng Subject
-    public function subject()
-    {
-        return $this->belongsTo(Subject::class, 'IdSubject', 'IdSubject');
-    }
+    public function subjects()
+{
+    return $this->belongsToMany(Subject::class, 'student_subject', 'MSSV', 'IdSubject');
+}
+
+    
 }
 

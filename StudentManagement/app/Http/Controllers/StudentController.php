@@ -12,7 +12,7 @@ class StudentController extends Controller
     // Hiển thị danh sách sinh viên
     public function index()
     {
-        $students = Student::with('subject')->get();
+        $students = Student::with('subjects')->get();
         return view('students.index', compact('students'));
     }
 
@@ -22,7 +22,16 @@ class StudentController extends Controller
         $subjects = Subject::all();
         return view('students.create', compact('subjects'));
     }
+    //Đăng kí môn học 
+    public function assignSubjects(Request $request, $MSSV)
+    {
+        $student = Student::findOrFail($MSSV);
+        $subjects = $request->input('subjects'); // Lấy danh sách môn học từ form
 
+        $student->subjects()->sync($subjects); // Gán môn học cho sinh viên
+
+        return redirect()->back()->with('success', 'Cập nhật môn học thành công!');
+    }
     // Lưu sinh viên mới
     public function store(Request $request)
     {
@@ -33,62 +42,81 @@ class StudentController extends Controller
             'BirthDay' => 'required|date|date_format:Y-m-d|beforeOrEqual:'.now()->subYears(18)->toDateString(),
             'Gender' => 'required|in:male,female',
             'Avatar' => 'nullable|image|max:2048',
-            'IdSubject' => 'required|exists:subjects,IdSubject',
+            'IdSubject' => 'required|array',
+            'IdSubject.*' => 'exists:subjects,IdSubject',
         ]);
-
-        if ($request->hasFile('Avatar')) {
-            $avatarPath = $request->file('Avatar')->store('avatars', 'public');
-            $validatedData['Avatar'] = $avatarPath;
-        } else {
-            $validatedData['Avatar'] = 'avatars/profile.png';
+    
+        // Chuyển Gender thành chữ hoa đầu (Male, Female)
+        $validatedData['Gender'] = ucfirst($validatedData['Gender']);
+    
+        // Lưu ảnh đại diện
+        $avatarPath = $request->hasFile('Avatar') 
+            ? $request->file('Avatar')->store('avatars', 'public') 
+            : 'avatars/profile.png';
+    
+        // Tạo sinh viên
+        $student = Student::create([
+            'MSSV' => $validatedData['MSSV'],
+            'LastName' => $validatedData['LastName'],
+            'FirstName' => $validatedData['FirstName'],
+            'BirthDay' => $validatedData['BirthDay'],
+            'Gender' => $validatedData['Gender'],
+            'Avatar' => $avatarPath,
+        ]);
+    
+        // Gán môn học cho sinh viên
+        if (!empty($validatedData['IdSubject'])) {
+            $student->subjects()->sync($validatedData['IdSubject']);
         }
-
-        Student::create($validatedData);
-
+    
         return redirect()->route('students.index')->with('success', 'Sinh viên đã được tạo thành công.');
     }
-
+    
     // Hiển thị form sửa sinh viên
     public function edit(Student $student)
     {
         $subjects = Subject::all();
-        return view('students.edit', compact('student', 'subjects'));
+        $selectedSubjects = $student->subjects->pluck('IdSubject')->toArray(); // Lấy danh sách môn học của sinh viên
+    
+        return view('students.edit', compact('student', 'subjects', 'selectedSubjects'));
     }
 
     // Cập nhật sinh viên
     public function update(Request $request, Student $student)
     {
         $request->validate([
-            'MSSV' => 'required|integer|unique:students,MSSV,' . $student->MSSV . ',MSSV',
             'LastName' => 'required|string|max:255',
             'FirstName' => 'required|string|max:255',
             'BirthDay' => 'required|date|date_format:Y-m-d|beforeOrEqual:'.now()->subYears(18)->toDateString(),
             'Gender' => 'required|in:male,female',
             'Avatar' => 'nullable|image|max:2048',
-            'IdSubject' => 'required|exists:subjects,IdSubject',
+            'subjects' => 'required|array',
+            'subjects.*' => 'exists:subjects,IdSubject',
         ]);
-
-        $avatarPath = $student->Avatar;
-
+    
+        // Xử lý ảnh đại diện
         if ($request->hasFile('Avatar')) {
             if ($student->Avatar) {
                 Storage::disk('public')->delete($student->Avatar);
             }
-
-            try {
-                $avatarPath = $request->file('Avatar')->store('avatars', 'public');
-            } catch (\Exception $e) {
-                return redirect()->back()->withErrors(['Avatar' => 'Có lỗi xảy ra khi tải lên hình đại diện: ' . $e->getMessage()]);
-            }
+            $avatarPath = $request->file('Avatar')->store('avatars', 'public');
+        } else {
+            $avatarPath = $student->Avatar;
         }
-
-        $updateSuccess = $student->update($request->except('Avatar') + ['Avatar' => $avatarPath]);
-
-        if (!$updateSuccess) {
-            return redirect()->back()->withErrors(['update' => 'Có lỗi xảy ra khi cập nhật thông tin sinh viên.']);
-        }
-
-        return redirect()->route('students.index')->with('success', 'Sinh viên đã được tạo thành công.');
+    
+        // Cập nhật thông tin sinh viên
+        $student->update([
+            'LastName' => $request->LastName,
+            'FirstName' => $request->FirstName,
+            'BirthDay' => $request->BirthDay,
+            'Gender' => $request->Gender,
+            'Avatar' => $avatarPath,
+        ]);
+    
+        // Cập nhật danh sách môn học
+        $student->subjects()->sync($request->subjects);
+    
+        return redirect()->route('students.index')->with('success', 'Cập nhật sinh viên thành công.');
     }
 
     // Xóa sinh viên
@@ -101,7 +129,8 @@ class StudentController extends Controller
     // Hiển thị sinh viên theo MSSV
     public function show($id)
     {
-        $students = Student::where('MSSV', $id)->get();
-        return view('students.info', compact('students'));
+        $student = Student::with('subjects')->where('MSSV', $id)->firstOrFail();
+        return view('students.info', compact('student'));
     }
+    
 }

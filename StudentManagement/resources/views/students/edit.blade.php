@@ -80,17 +80,16 @@
                                     <input type="file" class="form-control-file" name="Avatar" value="{{ $student->Avatar}}">
                                 </div>
                                 <div class="form-group">
-                                    <label for="IdSubject">Môn học</label>
-                                    <select name="IdSubject" id="IdSubject" class="form-control">
-                                        <option value="">Chọn lớp</option>
+                                    <label for="subjects">Chọn Môn Học</label>
+                                    <select name="subjects[]" id="subjects" class="form-control" multiple>
                                         @foreach($subjects as $subject)
-                                            <option value="{{ $subject->IdSubject }}" {{ old('IdSubject', $student->IdSubject) == $subject->IdSubject ? 'selected' : '' }}>
+                                            <option value="{{ $subject->IdSubject }}" {{ in_array($subject->IdSubject, $selectedSubjects) ? 'selected' : '' }}>
                                                 {{ $subject->NameSubject }}
                                             </option>
                                         @endforeach
                                     </select>
-                                    @if ($errors->has('IdSubject'))
-                                        <span class="text-danger">{{ $errors->first('IdSubject') }}</span>
+                                    @if ($errors->has('subjects'))
+                                        <span class="text-danger">{{ $errors->first('subjects') }}</span>
                                     @endif
                                 </div>
                                 <div class="form-group">

@@ -34,6 +34,7 @@ Route::middleware(['auth', 'userMiddleware']) -> group(function(){
 Route::middleware(['auth', 'adminMiddleware']) -> group(function(){
 
     Route::get('/admin/dashboard',[AdminController::class, 'index' ] ) ->name('admin.dashboard');
+    Route::post('/admin/students/{MSSV}/subjects', [StudentController::class, 'assignSubjects'])->name('students.assignSubjects');
 
     Route::get('/admin/subjects', [SubjectController::class, 'index'])->name('subjects.index');
     Route::get('/admin/subjects/create', [SubjectController::class, 'create'])->name('subjects.create');

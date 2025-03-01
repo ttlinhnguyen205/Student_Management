@@ -45,9 +45,9 @@
                         <div class="row">
                           <!-- Profile Picture -->
                             <div class="col-md-4 text-center">
-                                <img src="{{ asset('storage/'.$students->first()->Avatar) }}" class="rounded-square img-thumbnail" alt="Student Profile Picture">
-                                <h3 class="mt-3">{{ $students->first()->LastName . ' ' . $students->first()->FirstName }}</h3>
-                                <p class="text-muted">{{ $students->first()->MSSV }}</p>
+                                <img src="{{ asset('storage/'.$student->Avatar) }}" class="rounded-square img-thumbnail">
+                                <h3 class="mt-3">{{ $student->LastName . ' ' . $student->FirstName }}</h3>
+                                <p class="text-muted">{{ $student->MSSV }}</p>
                             </div>
                             <div class="col-md-8">
                                 <div class="card">
@@ -56,10 +56,20 @@
                                     </div>
                                     <div class="card-body">
                                         <ul class="list-group list-group-flush">
-                                            <li class="list-group-item"><strong>Mã môn học: </strong>{{ $students->first()->IdSubject }}</li>
-                                            <li class="list-group-item"><strong>Tên môn học: </strong>{{ $students->first()->subject->NameSubject ?? 'Không có thông tin' }}</li>
-                                            <li class="list-group-item"><strong>Ngày sinh: </strong>{{ $students->first()->BirthDay }}</li>
-                                            <li class="list-group-item"><strong>Giới tính: </strong>{{ $students->first()->Gender }}</li>
+                                            <li class="list-group-item"><strong>Mã môn học: </strong>{{ $student->subjects->first()->IdSubject ?? 'Chưa có môn học' }}</li>
+                                            <li class="list-group-item">
+                                                <strong>Môn học: </strong>
+                                                @if($student->subjects->isNotEmpty())
+                                                    @foreach($student->subjects as $subject)
+                                                        <span class="badge badge-primary">{{ $subject->NameSubject }}</span>
+                                                    @endforeach
+                                                @else
+                                                    <span class="text-danger">Chưa đăng ký môn học</span>
+                                                @endif
+                                            </li>
+                                            
+                                            <li class="list-group-item"><strong>Ngày sinh: </strong>{{ $student->BirthDay }}</li>
+                                            <li class="list-group-item"><strong>Giới tính: </strong>{{ $student->Gender }}</li>
                                         </ul>
                                     </div>
                                 </div>

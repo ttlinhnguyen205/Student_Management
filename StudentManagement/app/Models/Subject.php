@@ -9,15 +9,15 @@ class Subject extends Model
 {
     use HasFactory;
 
-    // Đặt tên bảng nếu tên bảng không phải là số nhiều của tên model
     protected $table = 'subjects';
-
     protected $primaryKey = 'IdSubject'; // Khóa chính
+    public $incrementing = false; // Vì IdSubject không phải auto-increment
+    protected $keyType = 'string'; // Khóa chính là chuỗi
+
     protected $casts = [
         'IdSubject' => 'string',
     ];
 
-    // Các cột có thể được gán đại trà
     protected $fillable = [
         'IdSubject', 'NameSubject', 'Note', 'Deleted', 'start_date', 'end_date'
     ];
@@ -25,6 +25,7 @@ class Subject extends Model
     // Định nghĩa quan hệ với bảng students
     public function students()
     {
-        return $this->hasMany(Student::class, 'IdSubject', 'IdSubject');
+        return $this->belongsToMany(Student::class, 'student_subject', 'IdSubject', 'MSSV');
     }
 }
+
