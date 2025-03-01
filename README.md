@@ -1,4 +1,5 @@
 # Nguyễn Thị Thùy Linh - 23010633.
+Demo của dự án: 
 # Project: Student Management.
 Student Managment Web Application
 # Chức năng:
@@ -34,6 +35,6 @@ Student Managment Web Application
 
 ## Git của dự án
 https://github.com/ttlinhnguyen205/Student_Management 
-## Demo của dự án
+
 
 
