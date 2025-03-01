@@ -6,11 +6,11 @@ use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\StudentController; 
 use App\Http\Controllers\SubjectController;
-use App\Http\Controllers\RegistrationController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
+
 
 
 Route::middleware('auth')->group(function () {
@@ -51,4 +51,5 @@ Route::middleware(['auth', 'adminMiddleware']) -> group(function(){
     Route::get('/admin/students/{student}', [StudentController::class, 'show'])->name('students.show');
     Route::put('/admin/students/{student}', [StudentController::class, 'update'])->name('students.update');
     Route::post('/admin/students', [StudentController::class, 'store'])->name('students.store');
+
 });
