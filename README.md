@@ -34,7 +34,11 @@ Student Managment Web Application
 #### 2.1.3. Giao diện quản lý sinh viên
 ![image](https://github.com/user-attachments/assets/769de435-abfe-4fe4-8d95-819765b90af0)
 ![image](https://github.com/user-attachments/assets/09133dca-8405-4674-8050-f249215918bf)
-### 2.1. Giao diện của User
+### 2.2. Giao diện của User
+#### 2.2.1. Xem danh sách môn học
+![image](https://github.com/user-attachments/assets/602a8c04-2c5d-4e49-9d49-8acccccd8eb2)
+#### 2.2.2. Xem danh sách sinh viên
+![image](https://github.com/user-attachments/assets/7332bc4c-0ac6-41cc-adcf-d0d57b83c7de)
 
 ## Git của dự án
 https://github.com/ttlinhnguyen205/Student_Management 
