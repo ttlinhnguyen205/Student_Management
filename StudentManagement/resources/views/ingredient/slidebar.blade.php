@@ -65,10 +65,14 @@
     <!-- Sidebar dành cho user -->
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('user.subject.index') }}">
+            <a class="nav-link" href="{{ route('user.subjects.index') }}">
                 <i class="fas fa-fw fa-cog"></i>
-                <span>Môn học</span>
+                <span>Danh sách môn học</span>
             </a>
+
+            <a class="nav-link" href="{{ route('user.students.index') }}">
+                <i class="fas fa-fw fa-cog"></i>
+                <span>Danh sách sinh viên</span>
         </li>
     </ul>
 

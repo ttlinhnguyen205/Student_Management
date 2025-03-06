@@ -1,7 +1,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('admin.dashboard') }}">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('dashboard') }}">
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
@@ -13,7 +13,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-        <a class="nav-link" href="{{ route('admin.dashboard') }}">
+        <a class="nav-link" href="{{ route('dashboard') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
@@ -65,9 +65,14 @@
     <!-- Sidebar dành cho user -->
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('user.subject.index') }}">
+            <a class="nav-link" href="{{ route('user.subjects.index') }}">
                 <i class="fas fa-fw fa-cog"></i>
-                <span>Môn học</span>
+                <span>Danh sách môn học</span>
+            </a>
+
+            <a class="nav-link" href="{{ route('user.students.index') }}">
+                <i class="fas fa-fw fa-cog"></i>
+                <span>Danh sách sinh viên</span>
             </a>
         </li>
     </ul>
