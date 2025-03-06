@@ -19,12 +19,11 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-//Client route
-Route::middleware(['auth', 'userMiddleware']) -> group(function(){
-
-    Route::get('dashboard',[UserController::class, 'index' ] ) ->name('dashboard');
-    Route::get('subjects', [SubjectController::class, 'index'])->name('user.subjects.index');
-    Route::get('students', [StudentController::class, 'index'])->name('user.students.index');
+// Client route
+Route::middleware(['auth', 'userMiddleware'])->group(function(){
+    Route::get('dashboard',[UserController::class, 'index'])->name('dashboard');
+    Route::get('subjects', [SubjectController::class, 'listForUser'])->name('user.subjects.index');
+    Route::get('students', [StudentController::class, 'listForUser'])->name('user.students.index');
 });
 
 //Admin Route

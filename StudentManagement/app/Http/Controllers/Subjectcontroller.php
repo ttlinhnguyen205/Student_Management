@@ -15,6 +15,13 @@ class SubjectController extends Controller
         $subjects = Subject::withCount('students')->get(); // Sử dụng withCount để lấy số lượng sinh viên
         return view('subjects.index', compact('subjects'));
     }
+    
+    // Hiển thị danh sách môn học chỉ xem (cho user)
+    public function listForUser()
+    {
+        $subjects = Subject::withCount('students')->get();
+        return view('subjects.user_index', compact('subjects'));
+    }
 
     // Hiển thị form tạo môn học
     public function create()

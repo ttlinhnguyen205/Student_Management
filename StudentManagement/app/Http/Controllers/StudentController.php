@@ -16,6 +16,13 @@ class StudentController extends Controller
         return view('students.index', compact('students'));
     }
 
+    // Hiển thị danh sách sinh viên chỉ dành cho user
+    public function listForUser()
+    {
+        $students = Student::all();
+        return view('students.user_index', compact('students'));
+    }
+
     // Hiển thị form tạo sinh viên
     public function create()
     {

@@ -23,7 +23,7 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-        Xem
+        Quản lý
     </div>
 
     @if(Auth::user()->usertype == 'admin')
