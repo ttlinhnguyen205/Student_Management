@@ -7,7 +7,7 @@ Student Managment Web Application
 - Thêm, sửa, xóa môn học.
 - Đăng nhập, đăng xuất.
 ## 1. UML của dự án 
-![Untitled](https://github.com/user-attachments/assets/a4e68320-c286-448d-84a0-227fea10388a)
+![sd](https://github.com/user-attachments/assets/68c32b83-3a14-4450-8936-5636a6565cb1)
 ### 1.1. Đăng nhập
 ![activity-Login](https://github.com/user-attachments/assets/b45975c5-ed77-4f37-b8c7-10779d0d9795)
 ### 1.2. Đăng xuất
