@@ -10,7 +10,7 @@ Student Managment Web Application
 ![sd](https://github.com/user-attachments/assets/68c32b83-3a14-4450-8936-5636a6565cb1)
 ### 1.1. Chức năng chung
 ### 1.1.1. Đăng nhập
-![activity-Login](https://github.com/user-attachments/assets/b45975c5-ed77-4f37-b8c7-10779d0d9795)
+![activity-Login(1)](https://github.com/user-attachments/assets/68e5c784-de84-49ac-9f43-736d61c7586e)
 ### 1.1.2. Đăng xuất
 ![activity-Log out](https://github.com/user-attachments/assets/8bc144a7-55ea-4c71-9a06-a1226bf9ba01)
 ### 1.2. Chức năng của Admin
