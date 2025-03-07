@@ -1,6 +1,5 @@
 # Nguyễn Thị Thùy Linh - 23010633 (N07).
-## Git của dự án
-https://github.com/ttlinhnguyen205/Student_Management 
+Repo: https://github.com/ttlinhnguyen205/Student_Management 
 # Project: Student Management.
 Student Managment Web Application
 # Chức năng:
