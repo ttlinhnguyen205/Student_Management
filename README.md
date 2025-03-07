@@ -1,4 +1,4 @@
-# Nguyễn Thị Thùy Linh - 23010633.
+# Nguyễn Thị Thùy Linh - 23010633 (N07).
 Demo của dự án: 
 # Project: Student Management.
 Student Managment Web Application
