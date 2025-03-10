@@ -1,7 +1,5 @@
 # Nguyễn Thị Thùy Linh - 23010633 (N07)
 - Repo: https://github.com/ttlinhnguyen205/Student_Management 
-- Báo cáo:
-- ( đã báo cáo, đã nộp readme).
 # Project: Student Management.
 Student Managment Web Application
 # Chức năng:
