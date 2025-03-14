@@ -57,10 +57,15 @@ class StudentController extends Controller
         $validatedData['Gender'] = ucfirst($validatedData['Gender']);
     
         // Lưu ảnh đại diện
-        $avatarPath = $request->hasFile('Avatar') 
-            ? $request->file('Avatar')->store('avatars', 'public') 
-            : 'avatars/profile.png';
-    
+        if ($request->hasFile('Avatar')) {
+            $file = $request->file('Avatar');
+            $avatarName = time() . '_' . $file->getClientOriginalName();
+            $avatarPath = 'storage/avatars/' . $avatarName; // Đường dẫn lưu ảnh
+        
+            $file->move(public_path('storage/avatars'), $avatarName);
+        } else {
+            $avatarPath = 'storage/avatars/profile.png'; // Ảnh mặc định
+        }        
         // Tạo sinh viên
         $student = Student::create([
             'MSSV' => $validatedData['MSSV'],
